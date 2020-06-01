@@ -1,12 +1,13 @@
 #!/bin/bash
 
+
 #### BEGIN VAN OPTIES ###
 
 # portnummer voor je browser: http://localhost:$port/
-port=8079
+port=8234
 
 # waar alle data wordt opgeslagen
-data=/my/docker/AlpinoGraph-data
+data=$HOME/.var/AlpinoGraph
 
 #### EINDE VAN OPTIES ####
 
