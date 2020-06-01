@@ -25,5 +25,8 @@ make
 
 echo
 echo
+echo Editor: $EDITOR
+echo
+echo
 
 cd
