@@ -4,7 +4,7 @@ groupadd --gid $USER user
 useradd --no-create-home --uid $USER --gid $GROUP user --password PKz1s.HfgMeIU --groups sudo
 find /var/www/html | xargs chown user:user
 
-service apache2 start &> /dev/null
+service apache2 start
 
 if [ ! -d /home/user/db_cluster ]
 then

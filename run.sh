@@ -26,6 +26,7 @@ echo -n -e '\033]0;docker:AlpinoGraph\007'
 docker run \
    --rm \
    -i -t \
+   -h alpinograph.`hostname -d` \
    -e USER=`id -u` \
    -e GROUP=`id -g` \
    -p $port:80 \

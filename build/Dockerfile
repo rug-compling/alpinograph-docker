@@ -52,4 +52,6 @@ ADD root.sh /
 ADD user.sh /
 ADD env.sh /
 
+EXPOSE 80
+
 CMD ["/bin/bash", "--rcfile", "/root.sh"]
