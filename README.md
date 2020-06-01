@@ -1,6 +1,8 @@
 
 # AlpinoGraph in Docker
 
+Zie ook: [AlpinoGraph](https://alpinograph.readthedocs.io/)
+
 Getest op Linux.
 
 Download het script `run.sh` en pas het aan voordat je het gaat gebruiken.
