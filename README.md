@@ -29,12 +29,12 @@ een corpus maken met [Alpino in Docker](https://github.com/rug-compling/alpino-d
 Een corpus bestaat uit een of meerdere bestanden. Bestanden met de
 volgende uitgangen worden herkend:
 
- * `.xml`, `.xml.gz` --- Een enkele geparste zin in het `alpino_ds`-formaat, een zogenaam Alpino-bestand.
- * `.tar`, `.tar.gz`, `.tgz`, `.zip` --- Archiefbestand met daarin Alpino-bestanden.
- * `.data.dz` --- Alpino-bestanden in het *compact corpus*-formaat.
+ * `.xml`, `.xml.gz` — Een enkele geparste zin in het `alpino_ds`-formaat, een zogenaam Alpino-bestand.
+ * `.tar`, `.tar.gz`, `.tgz`, `.zip` — Archiefbestand met daarin Alpino-bestanden.
+ * `.data.dz` — Alpino-bestanden in het *compact corpus*-formaat.
    Voor elk `.data.dz`-bestand dient ook een `.index`-bestand aanwezig
    te zijn.
- * `.dact` --- Alpino-bestanden in een DbXML-bestand.
+ * `.dact` — Alpino-bestanden in een DbXML-bestand.
 
 Een voorbeeld voor het invoeren van een corpus:
 
@@ -59,15 +59,14 @@ Om het corpus te kunnen gebruiken in de webinterface moet je het
 toevoegen aan het menu. Dat doe je door een regel toe te voegen in het
 bestand `corpora.txt` in je data-directory. Het eerste gedeelte is
 voor corpora die handmatig geparst zijn (of handmatig gecorrigeerd),
-het tweede deel voor corpora die automatisch zijn geparst.
+het tweede deel voor corpora die automatisch zijn geparst. (Er staan
+al een aantal corpora genoemd in `corpora.txt`, maar deze zijn niet
+vanzelf geïnstalleerd. Je kunt deze regels verwijderen, als je wilt.)
 
-Een regel bestaat uit de interne naam, het aantal regels, en de titel,
+Een regel bestaat uit de interne naam, het aantal zinnen in het corpus, en de titel,
 bijvoorbeeld:
 
-```
-:auto
-mijncorpus  42  Mijn eerste corpus
-```
+    mijncorpus  42  Mijn eerste corpus
 
 Nadat je `corpora.txt` hebt aangepast geef je het commando `update` om de
 veranderingen door te voeren in de interface.
