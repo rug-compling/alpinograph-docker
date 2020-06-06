@@ -89,29 +89,29 @@ Type "help" for help.
 
 user=# set graph_path = 'alpinotreebank';
 SET
-user=# match (w:word{lemma: 'fiets'}) return w.word;
-  word
----------
- "fiets"
- "fiets"
- "fiets"
+user=# match (w:word{lemma: 'fiets'}) return w.sentid, w.word;
+ sentid |  word
+--------+---------
+ "269"  | "fiets"
+ "3609" | "fiets"
+ "697"  | "fiets"
 (3 rows)
 
 user=# match (w:word{lemma: 'fiets'}) set w.is_een_fiets = true;
 UPDATE 3
-user=# match (w:word{is_een_fiets: true}) return w.word;
-  word
----------
- "fiets"
- "fiets"
- "fiets"
+user=# match (w:word{is_een_fiets: true}) return w.sentid, w.word;
+ sentid |  word
+--------+---------
+ "697"  | "fiets"
+ "269"  | "fiets"
+ "3609" | "fiets"
 (3 rows)
 
 user=# match (w:word{is_een_fiets: true}) set w.is_een_fiets = NULL;
 UPDATE 3
-user=# match (w:word{is_een_fiets: true}) return w.word;
- word
-------
+user=# match (w:word{is_een_fiets: true}) return w.sentid, w.word;
+ sentid | word
+--------+------
 (0 rows)
 
 user=# \q
