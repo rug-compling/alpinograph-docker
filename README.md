@@ -3,18 +3,25 @@
 
 Zie ook: [AlpinoGraph](https://alpinograph.readthedocs.io/)
 
-Getest op Linux.
+Dit is getest op Linux.
 
 Download het script `run.sh` en pas het aan voordat je het gaat gebruiken.
 
-Run `run.sh` om Docker te starten.
+De rest van de bestanden heb je niet nodig, tenzij je AlpinoGraph in
+Docker wilt aanpassen.
 
-Type `exit` of Ctrl-D om de database schoon af te sluiten en Docker te
+Run `run.sh` om AlpinoGraph in Docker te starten.
+
+Type `exit` of Control-D om de database schoon af te sluiten en Docker te
 stoppen.
 
-Kopieer een corpus naar je datadir. Dat kan een of meer dact-bestanden zijn,
-een compact corpus, losse xml-bestanden al dan niet gezipt, een tar- of
-zipbestand. In docker kun je het corpus invoeren, bijvoorbeeld:
+## Invoeren van een corpus
+
+Kopieer een [Alpino](https://www.let.rug.nl/vannoord/alp/Alpino/)-corpus
+naar je data-directory, dat gedefinieerd is in `run.sh`. (Of maak een harde
+link. Een symlink werkt niet.) Dat kunnen een of meer dact-bestanden
+zijn, een compact corpus, losse xml-bestanden al dan niet ge-gzip't,
+een tar- of zipbestand. In Docker kun je het corpus invoeren, bijvoorbeeld:
 
     alpino2agens -t alpinotreebank cdb.dact | agens -a
 
@@ -24,12 +31,20 @@ of bijvoorbeeld:
 
 Daarna kun je het corpus weer verwijderen.
 
-De lijst van corpora kun je bewerken in `corpora.txt`
-en het menu kun je aanpassen in `menu.xml`.
+De lijst van corpora voor de webinterface kun je bewerken in `corpora.txt`
+en het menu voor de webinterface kun je aanpassen in `menu.xml`.
 Run daarna `update` om de veranderingen door te voeren.
 
-Voor een interactieve sessie met AgensGraph, run `agens`.
-Sluit opdrachten af met een puntkomma.
+## Webinterface
+
+De webinterface is buiten Docker beschikbaar op http://localhost:8234/ of op een
+ander poortnummer als je dat hebt aangepast in `run.sh`
+
+## Command line
+
+Voor een interactieve sessie in Docker met
+[AgensGraph](https://bitnine.net/documentations/manual/agens_graph_developer_manual_en.html),
+run `agens`. Sluit opdrachten af met een puntkomma.
 
 ```text
 [docker:AlpinoGraph] user:~$ agens
@@ -56,8 +71,15 @@ user=# match (w:word{is_een_fiets: true}) return w.word;
  "fiets"
 (3 rows)
 
+user=# match (w:word{is_een_fiets: true}) set w.is_een_fiets = NULL;
+UPDATE 3
+user=# match (w:word{is_een_fiets: true}) return w.word;
+ word
+------
+(0 rows)
+
 user=# \q
 [docker:AlpinoGraph] user:~$
 ```
 
-Sluit af met Ctrl-D.
+Sluit de sessie af met Control-D.
