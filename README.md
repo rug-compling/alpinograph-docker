@@ -5,7 +5,9 @@ Zie ook: [AlpinoGraph](https://alpinograph.readthedocs.io/)
 
 Dit is getest op Linux.
 
-Download het script `run.sh` en pas het aan voordat je het gaat gebruiken.
+Download het script
+[`run.sh`](https://raw.githubusercontent.com/rug-compling/alpinograph-docker/master/run.sh)
+en pas het aan voordat je het gaat gebruiken.
 
 De rest van de bestanden heb je niet nodig, tenzij je AlpinoGraph in
 Docker wilt aanpassen.
