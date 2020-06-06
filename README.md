@@ -30,11 +30,11 @@ Een corpus bestaat uit een of meerdere bestanden. Bestanden met de
 volgende uitgangen worden herkend:
 
  * `.xml`, `.xml.gz` — Een enkele geparste zin in het `alpino_ds`-formaat, een zogenaam Alpino-bestand.
- * `.tar`, `.tar.gz`, `.tgz`, `.zip` — Archiefbestand met daarin Alpino-bestanden.
- * `.data.dz` — Alpino-bestanden in het *compact corpus*-formaat.
+ * `.tar`, `.tar.gz`, `.tgz`, `.zip` — Archiefbestand met daarin meerdere Alpino-bestanden.
+ * `.data.dz` — Alpino-bestanden samengevoegd in het *compact corpus*-formaat.
    Voor elk `.data.dz`-bestand dient ook een `.index`-bestand aanwezig
    te zijn.
- * `.dact` — Alpino-bestanden in een DbXML-bestand.
+ * `.dact` — Alpino-bestanden samengevoegd in een DbXML-bestand.
 
 Een voorbeeld voor het invoeren van een corpus:
 
