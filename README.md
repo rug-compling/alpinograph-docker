@@ -21,21 +21,56 @@ stoppen.
 
 Kopieer een [Alpino](https://www.let.rug.nl/vannoord/alp/Alpino/)-corpus
 naar je data-directory, dat gedefinieerd is in `run.sh`. (Of maak een harde
-link. Een symlink werkt niet.) Dat kunnen een of meer dact-bestanden
-zijn, een compact corpus, losse xml-bestanden al dan niet ge-gzip't,
-een tar- of zipbestand. In Docker kun je het corpus invoeren, bijvoorbeeld:
+link. Een symlink werkt niet.)
 
-    alpino2agens -t alpinotreebank cdb.dact | agens -a
+Je kunt een voorbeeld-corpus downloaden van ... TODO, of je kunt zelf
+een corpus maken met [Alpino in Docker](https://github.com/rug-compling/alpino-docker).
 
-of bijvoorbeeld:
+Een corpus bestaat uit een of meerdere bestanden. Bestanden met de
+volgende uitgangen worden herkend:
 
-    find . -name '*.xml' | sort | alpino2agens -t mijncorpus | agens -a
+ * `.xml`, `.xml.gz` --- Een enkele geparste zin in het `alpino_ds`-formaat, een zogenaam Alpino-bestand.
+ * `.tar`, `.tar.gz`, `.tgz`, `.zip` --- Archiefbestand met daarin Alpino-bestanden.
+ * `.data.dz` --- Alpino-bestanden in het *compact corpus*-formaat.
+   Voor elk `.data.dz`-bestand dient ook een `.index`-bestand aanwezig
+   te zijn.
+ * `.dact` --- Alpino-bestanden in een DbXML-bestand.
 
-Daarna kun je het corpus weer verwijderen.
+Een voorbeeld voor het invoeren van een corpus:
 
-De lijst van corpora voor de webinterface kun je bewerken in `corpora.txt`
-en het menu voor de webinterface kun je aanpassen in `menu.xml`.
-Run daarna `update` om de veranderingen door te voeren.
+    alpino2agens -t mijncorpus deel1.zip deel2.zip deel3.zip | agens -a
+
+Hierin is `mijncorpus` de interne naam die je aan het corpus geeft.
+Dit moet één woord zijn, bestaand uit letters.
+
+Let op: De Alpino-bestanden uit alle invoerbestanden samen moeten elk een
+uniek sentence-ID hebben.
+
+Wanneer je zoveel invoerbestanden hebt dat de commandoregel te lang
+wordt kun je bestandsnamen via een pipe doorgeven, één naam per regel,
+bijvoorbeeld zo:
+
+    find mijncorpus -name '*.xml' | sort -g | alpino2agens -t mijncorpus | agens -a
+
+Na het invoeren kun je als je wilt de corpusbestanden weer verwijderen
+uit je data-directory.
+
+Om het corpus te kunnen gebruiken in de webinterface moet je het
+toevoegen aan het menu. Dat doe je door een regel toe te voegen in het
+bestand `corpora.txt` in je data-directory. Het eerste gedeelte is
+voor corpora die handmatig geparst zijn (of handmatig gecorrigeerd),
+het tweede deel voor corpora die automatisch zijn geparst.
+
+Een regel bestaat uit de interne naam, het aantal regels, en de titel,
+bijvoorbeeld:
+
+```
+:auto
+mijncorpus  42  Mijn eerste corpus
+```
+
+Nadat je `corpora.txt` hebt aangepast geef je het commando `update` om de
+veranderingen door te voeren in de interface.
 
 ## Webinterface
 
