@@ -12,14 +12,17 @@ Run `run.sh` om Docker te starten.
 Type `exit` of Ctrl-D om de database schoon af te sluiten en Docker te
 stoppen.
 
-Kopieer een dact-bestand of een compact corpus naar je datadir. In
-docker kun je het corpus invoeren, bijvoorbeeld:
+Kopieer een corpus naar je datadir. Dat kan een of meer dact-bestanden zijn,
+een compact corpus, losse xml-bestanden al dan niet gezipt, een tar- of
+zipbestand. In docker kun je het corpus invoeren, bijvoorbeeld:
 
-    dact2agens -t alpinotreebank cdb.dact | agens -a
+    alpino2agens -t alpinotreebank cdb.dact | agens -a
 
-Daarna kun je het dact-bestand weer verwijderen.
+of bijvoorbeeld:
 
-(Dit werkt ook met compacte corpora.)
+    find . -name '*.xml' | sort | alpino2agens -t mijncorpus | agens -a
+
+Daarna kun je het corpus weer verwijderen.
 
 De lijst van corpora kun je bewerken in `corpora.txt`
 en het menu kun je aanpassen in `menu.xml`.

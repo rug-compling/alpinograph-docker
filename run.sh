@@ -7,6 +7,7 @@
 port=8234
 
 # waar alle data wordt opgeslagen
+# (het path naar) deze directory moet leesbaar zijn voor docker (voor iedereen?)
 data=$HOME/.var/AlpinoGraph
 
 #### EINDE VAN OPTIES ####
