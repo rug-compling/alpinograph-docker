@@ -1,7 +1,7 @@
 # tar vczf go.tar.gz --exclude=.git /go/alpinograph
 # tar vczf agensgraph.tar.gz /my/opt/agensgraph
 # tar vczf dbxml.tar.gz /my/opt/dbxml-6.1.4-patch_26647/lib
-# pushd /home/peter/web/urd/www/alpinograph && tar vczf /my/docker/AlpinoGraph/build/alpg.tar.gz --exclude=.git --exclude=docs --exclude=tmp --exclude=.dc . && popd
+# pushd /home/peter/web/urd/www/alpinograph && tar vczf /my/docker/AlpinoGraph/build/alpg.tar.gz --exclude=.git --exclude=docs --exclude=tmp --exclude login --exclude login.home --exclude login.urd2 --exclude=.dc . && popd
 
 FROM debian:10
 
@@ -42,6 +42,7 @@ ADD go.tar.gz /
 RUN rm -r /var/www/html/*
 ADD libs.tar.gz /usr/lib/x86_64-linux-gnu
 ADD alpg.tar.gz /var/www/html
+ADD login /var/www/html/bin
 
 ADD favicon.ico /var/www/html
 ADD jquery.js /var/www/html

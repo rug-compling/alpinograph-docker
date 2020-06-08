@@ -14,9 +14,6 @@ then
     rm /pw
     sudo -u user -E /my/opt/agensgraph/bin/ag_ctl -l /home/user/log/agensgraph.log start
     sudo -u user -E /my/opt/agensgraph/bin/createdb -e -O user -U user
-    echo "CREATE ROLE guest WITH LOGIN PASSWORD 'guest';" > /guest
-    sudo -u user -E /my/opt/agensgraph/bin/agens -f /guest -U user -a
-    rm /guest
 else
     sudo -u user -E /my/opt/agensgraph/bin/ag_ctl -l /home/user/log/agensgraph.log start
 fi
