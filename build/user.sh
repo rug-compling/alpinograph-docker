@@ -25,8 +25,13 @@ make
 
 echo
 echo
+echo ==============================================================================
+echo
+echo Help: https://github.com/rug-compling/alpinograph-docker/blob/master/README.md
+echo Commander: mc
 echo Editor: $EDITOR
 echo
+echo ==============================================================================
 echo
 
 cd
