@@ -24,6 +24,8 @@ then
     exit
 fi
 
+# xdg-open http://localhost:$port/ &> /dev/null &
+
 docker run \
    --rm \
    -i -t \

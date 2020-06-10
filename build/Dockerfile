@@ -52,6 +52,7 @@ RUN echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 ADD root.sh /
 ADD user.sh /
 ADD env.sh /
+ADD help.txt /
 
 EXPOSE 80
 

@@ -1,0 +1,49 @@
+
+Invoeren eigen corpus (onderstreepte delen aanpassen):
+
+    alpino2agens -t [4mmijncorpus[0m [4mdeel1.zip deel2.zip deel3.zip[0m | agens -a
+
+Nieuw corpus toevoegen in browser:
+
+    nano corpora.txt && update
+
+Interactieve sessie starten:
+
+    agens
+
+Voorbeeld van een interactieve sessie:
+
+ |  [docker:AlpinoGraph] user:~$ [1magens[0m
+ |  agens (AgensGraph 2.2devel, based on PostgreSQL 10.4)
+ |  Type "help" for help.
+ |  
+ |  user=# [1mset graph_path = 'alpinotreebank';[0m
+ |  SET
+ |  user=# [1mmatch (w:word{lemma: 'fiets'}) return w.sentid, w.word;[0m
+ |   sentid |  word
+ |  --------+---------
+ |   "269"  | "fiets"
+ |   "3609" | "fiets"
+ |   "697"  | "fiets"
+ |  (3 rows)
+ |  
+ |  user=# [1mmatch (w:word{lemma: 'fiets'}) set w.is_een_fiets = true;[0m
+ |  UPDATE 3
+ |  user=# [1mmatch (w:word{is_een_fiets: true}) return w.sentid, w.word;[0m
+ |   sentid |  word
+ |  --------+---------
+ |   "697"  | "fiets"
+ |   "269"  | "fiets"
+ |   "3609" | "fiets"
+ |  (3 rows)
+ |  
+ |  user=# [1mmatch (w:word{is_een_fiets: true}) set w.is_een_fiets = NULL;[0m
+ |  UPDATE 3
+ |  user=# [1mmatch (w:word{is_een_fiets: true}) return w.sentid, w.word;[0m
+ |   sentid | word
+ |  --------+------
+ |  (0 rows)
+ |  
+ |  user=# [1m\q[0m
+ |  [docker:AlpinoGraph] user:~$
+
