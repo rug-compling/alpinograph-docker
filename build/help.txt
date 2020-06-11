@@ -23,7 +23,15 @@ Voorbeeld van een interactieve sessie:
  |  [docker:AlpinoGraph] user:~$ [1magens[0m
  |  agens (AgensGraph 2.2devel, based on PostgreSQL 10.4)
  |  Type "help" for help.
- |  
+ |
+ |  user=# [1m\dn[0m
+ |      List of schemas
+ |        Name      | Owner
+ |  ----------------+-------
+ |   alpinotreebank | user
+ |   public         | user  [31;1m-- dit is geen corpus[0m
+ |  (2 rows)
+ |
  |  user=# [1mset graph_path = 'alpinotreebank';[0m
  |  SET
  |  user=# [1mmatch (w:word{lemma: 'fiets'}) return w.sentid, w.word;[0m
@@ -33,7 +41,7 @@ Voorbeeld van een interactieve sessie:
  |   "3609" | "fiets"
  |   "697"  | "fiets"
  |  (3 rows)
- |  
+ |
  |  user=# [1mmatch (w:word{lemma: 'fiets'}) set w.is_een_fiets = true;[0m
  |  UPDATE 3
  |  user=# [1mmatch (w:word{is_een_fiets: true}) return w.sentid, w.word;[0m
@@ -43,14 +51,14 @@ Voorbeeld van een interactieve sessie:
  |   "269"  | "fiets"
  |   "3609" | "fiets"
  |  (3 rows)
- |  
+ |
  |  user=# [1mmatch (w:word{is_een_fiets: true}) set w.is_een_fiets = NULL;[0m
  |  UPDATE 3
  |  user=# [1mmatch (w:word{is_een_fiets: true}) return w.sentid, w.word;[0m
  |   sentid | word
  |  --------+------
  |  (0 rows)
- |  
+ |
  |  user=# [1m\q[0m
  |  [docker:AlpinoGraph] user:~$
 
