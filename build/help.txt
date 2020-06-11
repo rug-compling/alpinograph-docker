@@ -3,11 +3,18 @@ Invoeren eigen corpus (onderstreepte delen aanpassen):
 
     alpino2agens -t [4mmijncorpus[0m [4mdeel1.zip deel2.zip deel3.zip[0m | agens -a
 
+Voor een overzicht van geldige invoerbestanden:
+
+    alpino2agens
+
 Nieuw corpus toevoegen in browser:
 
     nano corpora.txt && update
 
-Interactieve sessie starten:
+Met de browser kun je geen veranderingen aanbrengen in een corpus. Dat
+kan wel met een interactieve sessie.
+
+Interactieve sessie met AgensGraph starten:
 
     agens
 

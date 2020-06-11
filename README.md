@@ -57,15 +57,17 @@ uit je data-directory.
 
 Om het corpus te kunnen gebruiken in de webinterface moet je het
 toevoegen aan het menu. Dat doe je door een regel toe te voegen in het
-bestand `corpora.txt` in je data-directory. Het eerste gedeelte is
-voor corpora die handmatig geparst zijn (of handmatig gecorrigeerd),
-het tweede deel voor corpora die automatisch zijn geparst. (Er staan
-al een aantal corpora genoemd in `corpora.txt`, maar deze zijn niet
-vanzelf geïnstalleerd. Je kunt deze regels verwijderen, als je wilt.)
+bestand `corpora.txt` in je data-directory. Hier staan als voorbeeld
+al een aantal corpora in vermeld, maar deze corpora zijn niet
+aanwezig. Die regels kun je verwijderen.
 
-Een regel bestaat uit de interne naam, het aantal zinnen in het corpus, en de titel,
-bijvoorbeeld:
+Regels die beginnen met een dubbele punt komen als tussenkopjes in het
+menu.
 
+Een regel voor een corpus bestaat uit de interne naam, het aantal
+zinnen in het corpus, en de titel, bijvoorbeeld:
+
+    :mijn corpora
     mijncorpus  42  Mijn eerste corpus
 
 Nadat je `corpora.txt` hebt aangepast geef je het commando `update` om de
