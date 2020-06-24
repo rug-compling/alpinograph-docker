@@ -1,6 +1,7 @@
 # tar vczf go.tar.gz --exclude=.git /go/alpinograph
 # tar vczf agensgraph.tar.gz /my/opt/agensgraph
-# tar vczf dbxml.tar.gz /my/opt/dbxml-6.1.4-patch_26647/lib
+# tar vczf dbxml2.tar.gz /my/opt/dbxml-rug-compling/lib
+# tar vczf dbxml6.tar.gz /my/opt/dbxml-6.1.4-patch_26647/lib
 # pushd /home/peter/web/urd/www/alpinograph && tar vczf /my/docker/AlpinoGraph/build/alpg.tar.gz --exclude=.git --exclude=docs --exclude=tmp --exclude login --exclude login.home --exclude login.urd2 --exclude=.dc . && popd
 
 FROM debian:10
@@ -37,11 +38,15 @@ RUN apt-get install -y \
   libcurl3-gnutls
 
 ADD agensgraph.tar.gz /
-ADD dbxml.tar.gz /
+ADD dbxml2.tar.gz /
+ADD dbxml6.tar.gz /
 ADD go.tar.gz /
 RUN rm -r /var/www/html/*
 ADD libs.tar.gz /usr/lib/x86_64-linux-gnu
 ADD alpg.tar.gz /var/www/html
+ADD dact_attrib /usr/local/bin
+ADD dact_attrib_v6 /usr/local/bin
+
 ADD login /var/www/html/bin
 
 ADD favicon.ico /var/www/html

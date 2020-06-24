@@ -11,6 +11,8 @@ Nieuw corpus toevoegen in browser:
 
     nano corpora.txt && update
 
+----------------------------------------------------------------
+
 Met de browser kun je geen veranderingen aanbrengen in een corpus. Dat
 kan wel met een interactieve sessie.
 
@@ -61,4 +63,36 @@ Voorbeeld van een interactieve sessie:
  |
  |  user=# [1m\q[0m
  |  [docker:AlpinoGraph] user:~$
+
+----------------------------------------------------------------
+
+[1mHulpmiddelen[0m
+
+Met het programma [4mdact_attrib[0m kun je op basis van een xpath-expressie
+extra attributen toevoegen aan een dact-corpus. Na het inlezen in
+AlpinoGraph zijn die extra attributen beschikbaar met een prefix [4mx_[0m .
+
+Voorbeeld:
+
+    dact_attrib \
+        infile.dact \
+	outfile.dact \
+	'//node[@lemma=("rood","groen","blauw","geel","oranje","bruin","paars","roze")]' \
+	'node:kleur'
+
+Na invoeren van outfile.dact in AlpinoGraph:
+
+    match (w:word{x_kleur: true}) return w
+
+Run [4mdact_attrib[0m zonder opties voor complete uitleg.
+
+Het programma [4mdact_attrib[0m leest en schrijft dact-bestanden die gemaakt
+zijn met DbXML versie 2. Het kan geen bestanden inlezen die gemaakt
+zijn met DbXML versie 6.
+
+Je kunt met [4mdact_attrib_v6[0m wel dact-bestanden inlezen die gemaakt zijn
+met DbXML versie 6, maar dan krijg je als uitvoer ook een bestand
+gemaakt met DbXML versie 6. Zo'n corpus kun je probleemloos invoeren
+in AlpinoGraph, maar je kunt het niet gebruiken met andere toepassing
+die gelinkt zijn met versie 2 van de DbXML-library.
 
