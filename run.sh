@@ -25,6 +25,9 @@ then
 fi
 
 # xdg-open http://localhost:$port/ &> /dev/null &
+echo
+echo AlpinoGraph wordt gestart op http://localhost:$port/
+echo
 
 docker run \
    --rm \

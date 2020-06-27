@@ -88,7 +88,9 @@ Run [4mdact_attrib[0m zonder opties voor complete uitleg.
 
 Het programma [4mdact_attrib[0m leest en schrijft dact-bestanden die gemaakt
 zijn met DbXML versie 2. Het kan geen bestanden inlezen die gemaakt
-zijn met DbXML versie 6.
+zijn met DbXML versie 6. Probeer je dat wel, dan krijg je een foutmelding:
+
+    unsupported btree version
 
 Je kunt met [4mdact_attrib_v6[0m wel dact-bestanden inlezen die gemaakt zijn
 met DbXML versie 6, maar dan krijg je als uitvoer ook een bestand
