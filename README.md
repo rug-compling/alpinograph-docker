@@ -23,7 +23,7 @@ Kopieer een [Alpino](https://www.let.rug.nl/vannoord/alp/Alpino/)-corpus
 naar je data-directory, dat gedefinieerd is in `run.sh`. (Of maak een harde
 link. Een symlink werkt niet.)
 
-Je kunt een voorbeeld-corpus downloaden van ... TODO, of je kunt zelf
+Je kunt een voorbeeld-corpus downloaden van https://www.let.rug.nl/vannoord/treebanks/ , of je kunt zelf
 een corpus maken met [Alpino in Docker](https://github.com/rug-compling/alpino-docker).
 
 Een corpus bestaat uit een of meerdere bestanden. Bestanden met de

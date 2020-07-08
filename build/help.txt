@@ -1,4 +1,12 @@
 
+Voorbeeldcorpora kun je hier downloaden:
+
+    https://www.let.rug.nl/vannoord/treebanks/
+
+Of je kunt je eigen corpus maken met Alpino:
+
+    https://github.com/rug-compling/alpino-docker
+
 Invoeren eigen corpus (onderstreepte delen aanpassen):
 
     alpino2agens -t [4mmijncorpus[0m [4mdeel1.zip deel2.zip deel3.zip[0m | agens -a
