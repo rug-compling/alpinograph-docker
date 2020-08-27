@@ -15,7 +15,7 @@ data=$HOME/.var/AlpinoGraph
 case "$1" in
     run)
         ;;
-    update)
+    upgrade)
 	docker pull registry.webhosting.rug.nl/compling/alpinograph:latest
 	exit
 	;;
@@ -24,7 +24,7 @@ case "$1" in
 	echo "Gebruik:"
 	echo
 	echo "    $0 run"
-	echo "    $0 update"
+	echo "    $0 upgrade"
 	echo
 	exit
 esac
