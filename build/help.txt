@@ -103,6 +103,6 @@ zijn met DbXML versie 6. Probeer je dat wel, dan krijg je een foutmelding:
 Je kunt met [4mdact_attrib_v6[0m wel dact-bestanden inlezen die gemaakt zijn
 met DbXML versie 6, maar dan krijg je als uitvoer ook een bestand
 gemaakt met DbXML versie 6. Zo'n corpus kun je probleemloos invoeren
-in AlpinoGraph, maar je kunt het niet gebruiken met andere toepassing
+in AlpinoGraph, maar je kunt het niet gebruiken met andere toepassingen
 die gelinkt zijn met versie 2 van de DbXML-library.
 
