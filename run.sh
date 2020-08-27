@@ -37,4 +37,4 @@ docker run \
    -e GROUP=`id -g` \
    -p $port:80 \
    -v $data:/home/user \
-   rugcompling/alpinograph:latest
+   registry.webhosting.rug.nl/compling/alpinograph:latest

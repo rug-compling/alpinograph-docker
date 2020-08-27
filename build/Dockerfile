@@ -49,7 +49,6 @@ ADD dact_attrib_v6 /usr/local/bin
 
 ADD login /var/www/html/bin
 
-ADD favicon.ico /var/www/html
 ADD jquery.js /var/www/html
 
 RUN echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers

@@ -1,3 +1,3 @@
 #!/bin/sh
 set -x
-docker push rugcompling/alpinograph:latest
+docker push registry.webhosting.rug.nl/compling/alpinograph:latest
