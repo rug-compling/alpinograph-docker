@@ -12,6 +12,23 @@ data=$HOME/.var/AlpinoGraph
 
 #### EINDE VAN OPTIES ####
 
+case "$1" in
+    run)
+        ;;
+    update)
+	docker pull registry.webhosting.rug.nl/compling/alpinograph:latest
+	exit
+	;;
+    *)
+	echo
+	echo "Gebruik:"
+	echo
+	echo "    $0 run"
+	echo "    $0 update"
+	echo
+	exit
+esac
+
 
 if [ ! -d "$data" ]
 then
