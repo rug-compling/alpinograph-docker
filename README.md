@@ -1,7 +1,7 @@
 
 # AlpinoGraph in Docker
 
-Zie ook: [AlpinoGraph](https://alpinograph.readthedocs.io/)
+Zie ook: [AlpinoGraph](https://urd2.let.rug.nl/~kleiweg/alpinograph-docs/)
 
 Dit is getest op Linux.
 
