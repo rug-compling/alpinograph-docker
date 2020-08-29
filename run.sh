@@ -12,11 +12,13 @@ data=$HOME/.var/AlpinoGraph
 
 #### EINDE VAN OPTIES ####
 
+image=registry.webhosting.rug.nl/compling/alpinograph:latest
+
 case "$1" in
     run)
         ;;
     upgrade)
-	docker pull registry.webhosting.rug.nl/compling/alpinograph:latest
+	docker pull $image
 	exit
 	;;
     *)
@@ -54,4 +56,4 @@ docker run \
    -e GROUP=`id -g` \
    -p $port:80 \
    -v $data:/home/user \
-   registry.webhosting.rug.nl/compling/alpinograph:latest
+   $image
