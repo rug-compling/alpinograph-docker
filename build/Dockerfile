@@ -60,4 +60,10 @@ ADD help.txt /
 
 EXPOSE 80
 
+RUN cd /var/www/html && \
+    echo >> go.mod && \
+    echo 'replace github.com/pebbe/dbxml  => /go/alpinograph/src/github.com/pebbe/dbxml' >> go.mod && \
+    echo >> go.mod && \
+    echo 'replace github.com/pebbe/dbxml2 => /go/alpinograph/src/github.com/pebbe/dbxml2' >> go.mod
+
 CMD ["/bin/bash", "--rcfile", "/root.sh"]
