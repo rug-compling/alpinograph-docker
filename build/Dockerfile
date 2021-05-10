@@ -63,6 +63,14 @@ RUN cd /var/www/html && \
     echo >> go.mod && \
     echo 'replace github.com/pebbe/dbxml  => /go/alpinograph/src/github.com/pebbe/dbxml' >> go.mod && \
     echo >> go.mod && \
-    echo 'replace github.com/pebbe/dbxml2 => /go/alpinograph/src/github.com/pebbe/dbxml2' >> go.mod
+    echo 'replace github.com/pebbe/dbxml2 => /go/alpinograph/src/github.com/pebbe/dbxml2' >> go.mod && \
+    make
+
+RUN cd /var/www/html/ag && \
+    echo >> go.mod && \
+    echo 'replace github.com/pebbe/dbxml  => /go/alpinograph/src/github.com/pebbe/dbxml' >> go.mod && \
+    echo >> go.mod && \
+    echo 'replace github.com/pebbe/dbxml2 => /go/alpinograph/src/github.com/pebbe/dbxml2' >> go.mod && \
+    make
 
 CMD ["/bin/bash", "--rcfile", "/root.sh"]
