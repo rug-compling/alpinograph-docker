@@ -15,9 +15,12 @@ RUN apt-get update && apt-get install -y tzdata && \
 
 RUN apt-get install -y \
   apache2 \
+  git \
   golang-1.11-go \
   graphviz \
   less \
+  libcurl3-gnutls \
+  libreadline7 \
   libxml2-utils \
   locales \
   make \
@@ -32,10 +35,6 @@ ADD apache2.txt /
 RUN a2enmod cgi && \
     cat /apache2.txt >> /etc/apache2/sites-available/000-default.conf && \
     rm /apache2.txt
-
-RUN apt-get install -y \
-  libreadline7 \
-  libcurl3-gnutls
 
 ADD agensgraph.tar.gz /
 ADD dbxml2.tar.gz /
