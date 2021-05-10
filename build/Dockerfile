@@ -71,6 +71,9 @@ RUN . /env.sh && cd /var/www/html/ag && \
     echo 'replace github.com/pebbe/dbxml  => /go/alpinograph/src/github.com/pebbe/dbxml' >> go.mod && \
     echo >> go.mod && \
     echo 'replace github.com/pebbe/dbxml2 => /go/alpinograph/src/github.com/pebbe/dbxml2' >> go.mod && \
-    GOPATH=/go/alpinograph PATH=/usr/lib/go-1.11/bin:$PATH make
+    make
+
+RUN find /go | xargs chmod go+rw && \
+    find /go -type d | xargs chmod go+x
 
 CMD ["/bin/bash", "--rcfile", "/root.sh"]
