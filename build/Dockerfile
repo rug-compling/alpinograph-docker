@@ -59,18 +59,18 @@ ADD help.txt /
 
 EXPOSE 80
 
-RUN cd /var/www/html && \
+RUN . /env.sh && cd /var/www/html && \
     echo >> go.mod && \
     echo 'replace github.com/pebbe/dbxml  => /go/alpinograph/src/github.com/pebbe/dbxml' >> go.mod && \
     echo >> go.mod && \
     echo 'replace github.com/pebbe/dbxml2 => /go/alpinograph/src/github.com/pebbe/dbxml2' >> go.mod && \
-    PATH=/usr/lib/go-1.11/bin:$PATH make
+    make
 
-RUN cd /var/www/html/ag && \
+RUN . /env.sh && cd /var/www/html/ag && \
     echo >> go.mod && \
     echo 'replace github.com/pebbe/dbxml  => /go/alpinograph/src/github.com/pebbe/dbxml' >> go.mod && \
     echo >> go.mod && \
     echo 'replace github.com/pebbe/dbxml2 => /go/alpinograph/src/github.com/pebbe/dbxml2' >> go.mod && \
-    PATH=/usr/lib/go-1.11/bin:$PATH make
+    GOPATH=/go/alpinograph PATH=/usr/lib/go-1.11/bin:$PATH make
 
 CMD ["/bin/bash", "--rcfile", "/root.sh"]
