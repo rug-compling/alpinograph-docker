@@ -64,14 +64,8 @@ RUN . /env.sh && cd /var/www/html && \
     echo 'replace github.com/pebbe/dbxml  => /go/alpinograph/src/github.com/pebbe/dbxml' >> go.mod && \
     echo >> go.mod && \
     echo 'replace github.com/pebbe/dbxml2 => /go/alpinograph/src/github.com/pebbe/dbxml2' >> go.mod && \
-    make
-
-RUN . /env.sh && cd /var/www/html/ag && \
-    echo >> go.mod && \
-    echo 'replace github.com/pebbe/dbxml  => /go/alpinograph/src/github.com/pebbe/dbxml' >> go.mod && \
-    echo >> go.mod && \
-    echo 'replace github.com/pebbe/dbxml2 => /go/alpinograph/src/github.com/pebbe/dbxml2' >> go.mod && \
-    make
+    make && \
+    make -C ag
 
 RUN find /go | xargs chmod go+rw && \
     find /go -type d | xargs chmod go+x
