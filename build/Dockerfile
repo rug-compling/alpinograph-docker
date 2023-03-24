@@ -1,10 +1,10 @@
 # tar vczf go.tar.gz --exclude=.git /go/alpinograph
-# tar vczf agensgraph.tar.gz /my/opt/agensgraph
+# tar vczf agensgraph.tar.gz /my/opt/agensgraph /my/opt/agensgraph-2.13.1
 # tar vczf dbxml2.tar.gz /my/opt/dbxml-rug-compling/lib
 # tar vczf dbxml6.tar.gz /my/opt/dbxml-6.1.4-patch_26647/lib
 # pushd /home/peter/web/urd/www/alpinograph && tar vczf /my/docker/AlpinoGraph/build/alpg.tar.gz --exclude=.git --exclude=docs --exclude=tmp --exclude login --exclude login.home --exclude login.urd2 --exclude=.dc --exclude .vscode . && popd
 
-FROM debian:10
+FROM debian:11
 
 MAINTAINER Peter Kleiweg <p.c.j.kleiweg@rug.nl>
 
@@ -16,11 +16,11 @@ RUN apt-get update && apt-get install -y tzdata && \
 RUN apt-get install -y \
   apache2 \
   git \
-  golang-1.11-go \
+  golang-1.15-go \
   graphviz \
   less \
   libcurl3-gnutls \
-  libreadline7 \
+  libreadline8 \
   libxml2-utils \
   locales \
   make \
