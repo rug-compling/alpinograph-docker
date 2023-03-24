@@ -1,5 +1,5 @@
 # tar vczf go.tar.gz --exclude=.git /go/alpinograph
-# tar vczf agensgraph.tar.gz /my/opt/agensgraph /my/opt/agensgraph-2.13.1
+# tar vczf agensgraph.tar.gz /my/opt/agensgraph /my/opt/agensgraph-2.13.1 /my/opt/agensgraph-2.1.0
 # tar vczf dbxml2.tar.gz /my/opt/dbxml-rug-compling/lib
 # tar vczf dbxml6.tar.gz /my/opt/dbxml-6.1.4-patch_26647/lib
 # pushd /home/peter/web/urd/www/alpinograph && tar vczf /my/docker/AlpinoGraph/build/alpg.tar.gz --exclude=.git --exclude=docs --exclude=tmp --exclude login --exclude login.home --exclude login.urd2 --exclude=.dc --exclude .vscode . && popd
