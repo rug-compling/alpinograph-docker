@@ -50,14 +50,7 @@ ADD login /var/www/html/bin
 
 ADD jquery.js /var/www/html
 
-RUN echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-
-ADD root.sh /
-ADD user.sh /
 ADD env.sh /
-ADD help.txt /
-
-EXPOSE 80
 
 RUN . /env.sh && cd /var/www/html && \
     echo >> go.mod && \
@@ -67,7 +60,18 @@ RUN . /env.sh && cd /var/www/html && \
     make && \
     make -C ag
 
+RUN echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+ADD root.sh /
+ADD user.sh /
+ADD help.txt /
+
+EXPOSE 80
+
 RUN find /go | xargs chmod go+rw && \
     find /go -type d | xargs chmod go+x
+
+RUN groupadd --system --gid 999 agensgraph; \
+    useradd --system --uid 999 --gid 999 --home-dir /my/opt/agensgraph --no-create-home agensgraph
 
 CMD ["/bin/bash", "--rcfile", "/root.sh"]

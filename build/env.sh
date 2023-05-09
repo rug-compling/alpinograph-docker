@@ -6,4 +6,5 @@ export GO111MODULE=on
 export GOMODCACHE=/go/alpinograph/pkg/mod
 export GOPATH=/go/alpinograph
 export PGDATA=/home/user/db_cluster
+export PGUSER=user
 export PGPASSWORD=user

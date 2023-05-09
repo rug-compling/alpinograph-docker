@@ -12,6 +12,17 @@ data=$HOME/.var/AlpinoGraph
 
 #### EINDE VAN OPTIES ####
 
+case "`docker info --format '{{.SecurityOptions}}'`" in
+    *name=rootless*)
+	USER=0
+	GROUP=0
+        ;;
+    *)
+	USER=`id -u`
+	GROUP=`id -g`
+        ;;
+esac
+
 image=registry.webhosting.rug.nl/compling/alpinograph:latest
 
 case "$1" in
@@ -52,8 +63,8 @@ docker run \
    --rm \
    -i -t \
    -h alpinograph.`hostname -d` \
-   -e USER=`id -u` \
-   -e GROUP=`id -g` \
+   -e USER=$USER \
+   -e GROUP=$GROUP \
    -p $port:80 \
    -v $data:/home/user \
    $image
