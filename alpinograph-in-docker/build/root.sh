@@ -8,7 +8,7 @@ else
     AGUSER=user
     groupadd --gid $USER user
     useradd --no-create-home --uid $USER --gid $GROUP user --password PKz1s.HfgMeIU --groups sudo
-    find /var/www/html | xargs chown user:user
+    chown -R user:user /var/www/html
 fi
 
 service apache2 start

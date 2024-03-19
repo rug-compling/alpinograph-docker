@@ -16,7 +16,7 @@ for i in corpora.txt menu.xml
 do
     if [ ! -f ~/$i ]
     then
-	cp -p $i ~
+        cp -p $i ~
     fi
 done
 cp ~/corpora.txt ~/menu.xml .
