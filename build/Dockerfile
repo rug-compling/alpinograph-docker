@@ -1,10 +1,8 @@
-# tar vczf go.tar.gz --exclude=.git /go/alpinograph
-# tar vczf agensgraph.tar.gz /my/opt/agensgraph /my/opt/agensgraph-2.13.1 /my/opt/agensgraph-2.1.0
-# tar vczf dbxml2.tar.gz /my/opt/dbxml-rug-compling/lib
-# tar vczf dbxml6.tar.gz /my/opt/dbxml-6.1.4-patch_26647/lib
-# pushd /home/peter/web/urd/www/alpinograph && tar vczf /my/docker/AlpinoGraph/build/alpg.tar.gz --exclude=.git --exclude=docs --exclude=tmp --exclude login --exclude login.home --exclude login.urd2 --exclude=.dc --exclude .vscode . && popd
+#
+# Debian 12 (bookworm) met gcc en zo
+#
 
-FROM debian:11
+FROM debian:bookworm
 
 MAINTAINER Peter Kleiweg <p.c.j.kleiweg@rug.nl>
 
@@ -14,64 +12,27 @@ RUN apt-get update && apt-get install -y tzdata && \
     dpkg-reconfigure -f noninteractive tzdata
 
 RUN apt-get install -y \
-  apache2 \
+  bison \
+  build-essential \
+  flex \
   git \
-  golang-1.15-go \
-  graphviz \
+  golang-1.19-go \
   less \
-  libcurl3-gnutls \
-  libreadline8 \
+  libreadline-dev \
   libxml2-utils \
   locales \
   make \
   mc \
   nano \
-  sudo \
-  wget
+  wget \
+  zlib1g-dev
 
 RUN localedef -i nl_NL -c -f UTF-8 -A /usr/share/locale/locale.alias nl_NL.UTF-8
 
-ADD apache2.txt /
-RUN a2enmod cgi && \
-    cat /apache2.txt >> /etc/apache2/sites-available/000-default.conf && \
-    rm /apache2.txt
+ENV GOCACHE /cache/go/cache
+ENV GOPATH /cache/go
+ENV PATH /opt/bin:/opt/agensgraph/bin:/usr/lib/go-1.19/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-ADD agensgraph.tar.gz /
-ADD dbxml2.tar.gz /
-ADD dbxml6.tar.gz /
-ADD go.tar.gz /
-RUN rm -r /var/www/html/*
-ADD libs.tar.gz /usr/lib/x86_64-linux-gnu
-ADD alpg.tar.gz /var/www/html
-ADD dact_attrib /usr/local/bin
-ADD dact_attrib_v6 /usr/local/bin
+ADD init.sh /
 
-ADD login /var/www/html/bin
-
-ADD jquery.js /var/www/html
-
-ADD env.sh /
-
-RUN . /env.sh && cd /var/www/html && \
-    echo >> go.mod && \
-    echo 'replace github.com/pebbe/dbxml  => /go/alpinograph/src/github.com/pebbe/dbxml' >> go.mod && \
-    echo >> go.mod && \
-    echo 'replace github.com/pebbe/dbxml2 => /go/alpinograph/src/github.com/pebbe/dbxml2' >> go.mod && \
-    make && \
-    make -C ag
-
-RUN echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-
-ADD root.sh /
-ADD user.sh /
-ADD help.txt /
-
-EXPOSE 80
-
-RUN find /go | xargs chmod go+rw && \
-    find /go -type d | xargs chmod go+x
-
-RUN groupadd --system --gid 999 agensgraph; \
-    useradd --system --uid 999 --gid 999 --home-dir /my/opt/agensgraph --no-create-home agensgraph
-
-CMD ["/bin/bash", "--rcfile", "/root.sh"]
+CMD ["/bin/bash", "--rcfile", "/init.sh"]

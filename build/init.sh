@@ -1,44 +1,19 @@
+export LANG=nl_NL.utf8
+export LANGUAGE=nl_NL.utf8
+export LC_ALL=nl_NL.utf8
+export COLUMNS
+export LINES
+export EDITOR=nano
+
 alias ..='cd ..'
 alias beep='echo -e '\''\a\c'\'
 alias ll='ls -Fla'
 alias rm='rm -i'
 alias mc='. /usr/share/mc/bin/mc-wrapper.sh'
-PS1='[docker:AlpinoGraph] \u:\w\$ '
-export COLUMNS
-export LINES
-export EDITOR=nano
+alias path='echo $PATH | perl -p -e "s/:/\n/g"'
+
+PS1='[docker:'"$(< /etc/issue.net)"'] \u:\w\$ '
+
 umask 002
 
-sudo service apache2 start
-
-cd /var/www/html
-for i in corpora.txt menu.xml
-do
-    if [ ! -f ~/$i ]
-    then
-	cp -p $i ~
-    fi
-done
-cp ~/corpora.txt ~/menu.xml .
-make
-
-if [ ! -d ~/db_cluster ]
-then
-    mkdir ~/log
-    initdb -U user
-    ag_ctl -l ~/log/logile start
-    createdb -e -O user -U user
-else
-    ag_ctl -l ~/log/logile start
-fi
-
-function cleanexit {
-    ag_ctl -m fast stop
-    exit
-}
-trap cleanexit 1 2 3 9 15
-
-alias ag_start='ag_ctl -l ~/log/logfile start'
-alias ag_stop='ag_ctl -m fast stop'
-
-cd
+cd /opt

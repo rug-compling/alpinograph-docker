@@ -1,2 +1,7 @@
-#!/bin/sh
-docker build -t registry.webhosting.rug.nl/compling/alpinograph:latest .
+#!/bin/bash
+set -e
+unset CDPATH
+script="$(readlink -f "$0")"
+cd "$(dirname "$script")"
+
+docker build -t localhost/alpinograph-devel:latest .

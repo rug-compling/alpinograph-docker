@@ -1,0 +1,9 @@
+export LANG=nl_NL.utf8
+export LANGUAGE=nl_NL.utf8
+export LC_ALL=nl_NL.utf8
+export PATH=/opt/bin:/opt/agensgraph/bin:/usr/lib/go-1.19/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export GOCACHE=/home/user/go/cache
+export GOPATH=/home/user/go
+export PGDATA=/home/user/db_cluster
+export PGUSER=user
+export PGPASSWORD=user
